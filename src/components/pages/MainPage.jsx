@@ -8,9 +8,15 @@ import {
   CategoryName,
   CategoryCount,
 } from "../../assets/css/MainPage.styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
+  const loc = () => {
+    navigate("/character-detail");
+  };
+
   const categories = [
     {
       id: 1,
@@ -75,6 +81,8 @@ const MainPage = () => {
           </CategoryCard>
         ))}
       </CategoryGrid>
+
+      <button onClick={loc}>임시</button>
     </Container>
   );
 };
