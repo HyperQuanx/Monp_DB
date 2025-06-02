@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from "./components/pages/MainPage";
+import SidePage_01_Character from "./components/pages/SidePage_01_Character";
+import SidePage_011_Character_List from "./components/pages/SidePage_011_Character_List";
+import SidePage_012_Character_Detail from "./components/pages/SidePage_012_Character_Detail";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/character-category"
+            element={<SidePage_01_Character />}
+          />
+          <Route
+            path="/character-list/:regionId"
+            element={<SidePage_011_Character_List />}
+          />
+          <Route
+            path="/character-detail"
+            element={<SidePage_012_Character_Detail />}
+          />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
